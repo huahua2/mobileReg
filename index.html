@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>会员注册-蓝海之略健康云</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style type="text/css">
+    body {
+        padding: 90px 0;
+        font-family: "微软雅黑", Helvetica, "宋体";
+        font-size: 14px;
+        background: #f5f5f5;
+        overflow-y: scroll;
+    }
+    .bg_J {
+        background: #61c2f4;
+        height: 92px;
+    }
+    .fixed-bottom-bg {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .clear-10 {
+        clear: both;
+        height: 10px;
+        font: 0/0 sans-serif;
+        overflow: hidden;
+    }
+    .btn-block {
+        background-color: #7cad2c;
+        border-color: #7cad2c;
+        color: #fff;
+    }
+    .close-btn-con {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #828282;
+        width: 1.25em;
+        height: 1.25em;
+        display: block;
+        border-bottom-left-radius: 1.25em;
+    }
+    .close-btn-con .close-btn-icon {
+        width: .6em;
+        height: .6em;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAYFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////98JRy6AAAAH3RSTlMA3y8CBhXI8CEM5vaOnvzrziYzmLwb2YizuKVJQ3llnWPsLgAAAHxJREFUGNNNz0sCgyAMRdGnIij0o1JttZ/sf5cNYKJ38uDMgo8bWmi/r4EjWpSeRBssZRIgj37gqVoBmoDe7nThvTEIzQJKubqAUmBQCkneOIqU8rP8myuV7t0JwvTIpOBGGKFmKwCYNb06xDJI9Mp32R2EFtSVZxCK6/gH/5oO+3ZD3/wAAAAASUVORK5CYII=) no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        position: absolute;
+        right: 3px;
+        top: 3px;
+    }
+    .sd-point {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+        height: 100%;
+    }
+    .sd-font {
+        margin: 0;
+        padding: 0 15px;
+        display: -webkit-box;
+        height: 62px;
+        overflow: hidden;
+        -webkit-box-align: center;
+    }
+    .sd-font > span {
+        -webkit-box-flex: 1;
+        display: block;
+        margin: 0 12px;
+        line-height: 120%;
+    }
+    .sd-dl {
+        display: block;
+        color: #34a2d7;
+        background: #fff;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        padding: 0 12px;
+        font-weight: normal;
+    }
+    .sd-bosapp {
+        width: 2.785em;
+        height: 2.785em;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0OUJEQzU1MjFDRjJFMzExQjM4QTlFRkRCMDc5QjI4NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxQjk0NDFFMDA5QzAxMUU0QkYzNkY4NkYxMzUzODIzMyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxQjk0NDFERjA5QzAxMUU0QkYzNkY4NkYxMzUzODIzMyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgyRkYyMjVFOTAwOUU0MTE5NjRCRENFNzdEQzNFNjI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQ5QkRDNTUyMUNGMkUzMTFCMzhBOUVGREIwNzlCMjg0Ii8+IDwvcmRmOkRlc2NyaXB0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) no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .tips-err {
+        padding: 6px;
+        text-align: center;
+        color: #C97;
+        background: #FAEED5;
+        border: 1px solid #FAEED5;
+        position: fixed;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+    .tips-err {
+        color: #D01E5E;
+        background: #FFDCD7;
+        border-color: #F1A2B2;
+        -webkit-animation-name: shake;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: ease-in-out;
+    }
+    .shake {
+        -webkit-animation-name: shake;
+        animation-name: shake
+    }
+    @-webkit-keyframes shake {
+        0%, 100% {
+            -webkit-transform: translateX(0)
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translateX(-10px)
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translateX(10px)
+        }
+    }
+    @keyframes shake {
+        0%, 100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0)
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top bg_J" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="http://bosjk.com">
+                    <img src="http://bosjk.com/content/201406/images/logo.png" alt="蓝海之略健康云">
+                </a>
+
+            </div>
+
+        </nav>
+        <div id="tips" class="tips" style="display:none">手机号输入错误</div>
+        <h3 style="margin: 20px auto;text-align:center;color:#34a2d7">会员注册</h2>
+            <input type="text" class="form-control" id="txt_uname" name="Member_Account" placeholder="输入3-14个字符的账号">
+            <div class="clear-10"></div>
+            <input type="text" class="form-control" id="txt_email" name="Email" placeholder="输入邮箱">
+            <div class="clear-10"></div>
+            <input type="text" class="form-control" id="txt_idcard" name="patient.CradId" placeholder="输入身份证号码">
+            <div class="clear-10"></div>
+            <p>
+                <input type="text" class="form-control" id="txt_phone" name="patient.MobileNo" placeholder="输入手机号码" style="display:inline-block;width:65%">
+                <button type="button" class="btn btn-link" style="">获取验证码</button>
+            </p>
+
+<img class="checknum" style="cursor: pointer; height: 32px;" title="不区分大小写" src="http:bosjk.com/Handler/CheckCodeHandler.ashx">
+            <input type="text" class="form-control" id="txt_verifycode" name="verifycode" placeholder="输入收到的手机验证码">
+            <div class="clear-10"></div>
+
+            <input type="password" class="form-control" id="txt_password" name="MemberPassword" placeholder="输入创建密码">
+            <div class="clear-10"></div>
+
+            <button class="btn btn-lg btn-block" data-loading-text="正在注册..." id="btn_reg" type="button">注册</button>
+
+            <nav class="navbar navbar-default navbar-fixed-bottom fixed-bottom-bg" role="navigation">
+
+                <div class="close-btn-con close-btn">
+                    <span class="close-btn-icon"></span>
+                </div>
+                <a id="smartAd-open" class="sd-point" href="http://bosjk.com/app">
+                    <p class="sd-font"><b class="sd-bosapp"></b>
+                        <span>下载手机客户端
+                            <br/>寻医问药好帮手</span>
+                        <b class="sd-dl">立即下载</b>
+                    </p>
+                </a>
+            </nav>
+    </div>
+
+    <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".close-btn").click(function() {
+            $(".navbar-fixed-bottom").hide();
+        });
+        $("input[type=text],input[type=password]").focus(function() {
+            $("#tips").removeClass('tips-err').hide();
+        });
+
+        $("#btn_reg").click(function(event) {
+
+            validateForm.check();
+
+        })
+
+    })
+
+    var validateForm = {
+
+        check: function() {
+
+            var obj = $("input[type=text],input[type=password]");
+            $.each(obj, function() {
+                var _currentObj = $(this);
+                var placeholder = _currentObj.attr("placeholder");
+                var inputval = _currentObj.val();
+
+                switch (_currentObj.attr("id")) {
+                    case "txt_uname":
+                        if (inputval == "") {
+                            validateForm.showErrorMsg(_currentObj, placeholder);
+                            return false;
+                        }
+                        if (!/^(?![0-9_])[\u4e00-\u9fa5a-zA-Z0-9_]{3,14}$/.test(inputval)) {
+                            validateForm.showErrorMsg(_currentObj, "账号为3-14个中英文数字下划线字符，不能以数字下划线开头");
+                            return false;
+
+                        } else {
+                        	 Request.post("IsMemberExist","name=" + inputval, function(data){
+                               if (data.Status != "0") {
+                                validateForm.showErrorMsg(_currentObj, data.Msg); 
+                                return false; 
+                                }
+
+                        	 })
+                           
+                        }
+                        break;
+                case "txt_email":
+                if (inputval == "") {
+                    validateForm.showErrorMsg(_currentObj, placeholder);
+                     return false;
+                   
+                }
+                if (!/^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(inputval)) {
+                    validateForm.showErrorMsg(_currentObj, "邮箱格式错误，请重新输入");
+                    return false;
+                } else {
+
+                	 Request.post("IsEmailExist","email=" + inputval, function(data){
+                               if (data.Status != "0") {
+                        validateForm.showErrorMsg(_currentObj, data.Msg); return false; }
+                   })
+                       
+                    }
+                break;
+
+
+                        case "txt_phone":
+                if (inputval == "") {
+                     validateForm.showErrorMsg(_currentObj, placeholder);
+                    return false;
+                }
+                if (!/^(13[0-9]|15[0-9]|18[0-9]|14[0-9])\d{8}$/.test(inputval)) {
+                     validateForm.showErrorMsg(_currentObj,"手机号码格式错误，请重新输入");
+                    return false;
+                }
+                else {
+
+ Request.post("IsMobileExist","mobile=" + inputval, function(data){
+                               if (data.Status != "0") {
+                       SetErrorMsg(_currentObj, data.Msg); return false; }
+                   })
+
+                }
+                break;
+
+                 case "txt_verifycode":
+                if (inputval == "") {
+                   validateForm.showErrorMsg(_currentObj, placeholder);
+                    return false;
+                }
+                break;
+                 case "txt_password":
+                if (inputval == "") {
+                    validateForm.showErrorMsg(_currentObj, placeholder);
+                    return false;
+                }else{
+                var error_tips = "";
+                if (inputval.length < 6 || inputval.length > 18) {
+                    error_tips = "密码长度为6~18位";
+                } else if (/[^\x00-\x7f]/.test(inputval)) {
+                    error_tips = "密码长度6~18位，数字、字母、字符至少包含两种";
+                } else if (/^\d+$/.test(inputval)) {
+                    error_tips = "密码不能全为数字";
+                } else if (/^[A-Za-z]+$/.test(inputval)) {
+                    error_tips = "密码不能全为字母";
+                } else if (/^[^A-Za-z0-9]+$/.test(inputval)) {
+                    error_tips = "密码不能全为字符";
+                } 
+                if (error_tips!="") {
+                	validateForm.showErrorMsg(_currentObj, error_tips);
+                	return false;
+                }
+            }
+                break;
+
+                }
+
+            });
+        },
+        showErrorMsg: function(obj, msg) {
+
+            $("#tips").removeClass('tips-err').hide();
+            //var p = obj.attr("placeholder");
+            setTimeout(function() {
+                $("#tips").addClass('tips-err').show().html(msg);
+            }, 100);
+
+        }
+    }
+
+
+
+var Request = {
+    prefix : "/Registe/",
+    post : function(url, data, callback) {
+        $.ajax({
+            type: "POST",
+            data: data,
+            url : Request.prefix+url,
+            timeout: 1000,
+            success:function(data) {
+               var jsonobj = eval('(' + data + ')');
+               callback(jsonobj);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+}
+
+
+
+
+
+
+    //     function CheckForm(obj, e) {
+    //     var isCheck = false;
+    //     switch ($(obj).attr("id")) {
+    //         case "signup-username":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入账号");
+    //                 return false;
+    //             }
+    //             if (!/^(?![0-9_])[\u4e00-\u9fa5a-zA-Z0-9_]{3,14}$/.test(inputval)) {
+    //                 SetErrorMsg(obj, $(obj).attr("msg"));
+    //                 return false;
+
+    //             } else {
+    //                     $.ajax({
+    //                         type: "POST",
+    //                         url: "/Registe/IsMemberExist",
+    //                         data: "name=" + inputval,
+
+    //                         beforeSend: function () {
+    //                             SetTypeMsg(obj, "检查中…");
+    //                         },
+    //                         success: function (data) {
+    //                             var jsonobj = eval('(' + data + ')');
+    //                             if (jsonobj.Status == "0") {
+    //                                 SetOkMsg(obj);
+    //                                 return true;
+
+    //                             } else {
+    //                                 SetErrorMsg(obj, jsonobj.Msg);
+    //                                 return false;
+    //                             }
+    //                         }
+    //                     });               
+    //                 return false;
+    //             }
+    //             break;
+
+
+    //         case "signup-mobile":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入您的手机号码");
+    //                 return false;
+    //             }
+    //             if (!/^(13[0-9]|15[0-9]|18[0-9]|14[0-9])\d{8}$/.test(inputval)) {
+    //                 SetErrorMsg(obj, "手机号码格式错误，请重新输入");
+    //                 return false;
+    //             }
+    //             else {
+    //                 if (e == "blur") {
+    //                     $.ajax({
+    //                         type: "POST",
+    //                         url: "/Registe/IsMobileExist",
+    //                         data: "mobile=" + inputval,
+    //                         beforeSend: function () {
+    //                             SetTypeMsg(obj, "检查中…");
+    //                         },
+    //                         success: function (data) {
+    //                             var jsonobj = eval('(' + data + ')');
+    //                             if (jsonobj.Status == "0") {
+    //                                 SetOkMsg(obj);
+    //                                 return true;
+    //                             } else {
+    //                                 SetErrorMsg(obj, jsonobj.Msg);
+    //                                 return false;
+    //                             }
+    //                         }
+    //                     });
+    //                 }
+    //                 return false;
+
+    //             }
+    //             break;
+    //         case "signup-verify-code":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入收到的手机验证码");
+    //                 return false;
+    //             }
+    //             SetOkMsg(obj);
+    //             return true;
+    //             break;
+    //         case "signup-email-address":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "用于找回密码，也可以用于登录");
+    //                  return false;
+    //                 obj.parent().removeClass("field-group--type");
+    //                 obj.parent().find(".inline-tip").html("用于找回密码，也可以用于登录");
+    //                 return true;
+    //             }
+    //             if (!/^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(inputval)) {
+    //                 SetErrorMsg(obj, "邮箱格式错误，请重新输入");
+    //                 return false;
+    //             } else {
+    //                 if (e == "blur") {
+    //                     $.ajax({
+    //                         type: "POST",
+    //                         url: "/Registe/IsEmailExist",
+    //                         data: "email=" + inputval,
+    //                         beforeSend: function () {
+    //                             SetTypeMsg(obj, "检查中…");
+    //                         },
+    //                         success: function (data) {
+    //                             var jsonobj = eval('(' + data + ')');
+    //                             if (jsonobj.Status == "0") {
+    //                                 SetOkMsg(obj);
+    //                                 return true;
+    //                             } else {
+    //                                 SetErrorMsg(obj, jsonobj.Msg);
+    //                                 return false;
+    //                             }
+    //                         }
+    //                     });
+    //                 }
+    //                 return false;
+
+    //             }
+    //             break;
+    //         case "signup-password":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入密码");
+    //                 if ($("#signup-password-confirm").val() != "")
+    //                     SetErrorMsg($("#signup-password-confirm"), "两次输入的密码不一致，请重新输入");
+    //                 return false;
+    //             }
+    //             var error_tips = "";
+    //             if (inputval.length < 6 || inputval.length > 18) {
+    //                 error_tips = "密码长度为6~18位";
+    //             } else if (/[^\x00-\x7f]/.test(inputval)) {
+    //                 error_tips = "密码长度6~18位，数字、字母、字符至少包含两种";
+    //             } else if (/^\d+$/.test(inputval)) {
+    //                 error_tips = "密码不能全为数字";
+    //             } else if (/^[A-Za-z]+$/.test(inputval)) {
+    //                 error_tips = "密码不能全为字母";
+    //             } else if (/^[^A-Za-z0-9]+$/.test(inputval)) {
+    //                 error_tips = "密码不能全为字符";
+    //             } else {
+    //                 SetOkMsg(obj);
+    //                 //$("#signup-password-confirm").removeAttr("disabled");
+    //                 if (inputval == $("#signup-password-confirm").val()) {
+    //                     SetOkMsg($("#signup-password-confirm"));
+    //                 }
+    //                 return true;
+    //             }
+    //             SetErrorMsg(obj, error_tips);
+    //             if ($("#signup-password-confirm").val() != "")
+    //                 SetErrorMsg($("#signup-password-confirm"), "两次输入的密码不一致，请重新输入");
+    //             return false;
+    //             break;
+
+
+    //         case "signup-patient-crad":
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入身份证号码");
+    //                 return false;
+    //             }
+    //             else {
+    //                 if (e == "blur") {
+    //                     var resultMsg = checkIdCard(obj, '', '', '');
+    //                     if (resultMsg == undefined) {
+    //                          SetOkMsg(obj);
+    //                         return true;
+    //                     } else {
+    //                        SetErrorMsg(obj, resultMsg);
+    //                         return false;
+    //                     }
+    //                 }
+    //             }
+    //             break;
+    //         case "signup-idcardno":
+    //             if (inputval != "") {
+    //                 //if (!/(^\d{15}$)|(^\d{17}([0-9]|[x]|[X])$)/.test(inputval)) {
+    //                 //    SetErrorMsg(obj, "身份证格式不正确,位数一般为15或18位");
+    //                 //    return false;
+    //                 //}
+    //                 //else {
+    //                     if (e == "blur") {
+    //                         var resultMsg = checkIdCard(obj, '', '', '');
+
+    //                         if (resultMsg == null || resultMsg=="" || resultMsg == undefined) {
+    //                             $.ajax({
+    //                                 type: "POST",
+    //                                 url: "/Registe/IsCardIDExist",
+    //                                 data: "card=" + inputval,
+    //                                 beforeSend: function () {
+    //                                     SetTypeMsg(obj, "检查中…");
+    //                                 },
+    //                                 success: function (data) {
+
+    //                                     var jsonobj = eval('(' + data + ')');
+    //                                     if (jsonobj.Status == "0") {
+    //                                         SetOkMsg(obj);
+    //                                         return true;
+    //                                     } else {
+    //                                         SetErrorMsg(obj, jsonobj.Msg);
+    //                                         return false;
+    //                                     }
+    //                                 }
+    //                             });
+    //                         }
+    //                         else {
+    //                             SetErrorMsg(obj, resultMsg);
+    //                             return false;
+    //                         }
+    //                     }
+    //                 }
+    //            // }
+    //             else {
+    //                 obj.parent().removeClass("field-group--type");
+    //                 obj.parent().find(".inline-tip").html("");
+    //                 return true;
+    //             }
+
+    //             break;
+    //         case "txt_card":
+    //             if ($("#ihavecard").is(":checked")) {
+    //             if (inputval == "") {
+    //                 SetErrorMsg(obj, "请输入会员卡号");
+    //                 return false;
+    //             }
+    //             if (!/^(\d{12})\s*$/.test(inputval)) {
+    //                 SetErrorMsg(obj, "会员卡号为12位数字");
+    //                 return false;
+    //             } else {
+    //                 SetOkMsg(obj);
+    //                 return true;
+    //             }
+    //            }
+    //             break;
+
+    //     }
+
+    //     return isCheck;
+    // }
+    </script>
+</body>
+
+</html>
